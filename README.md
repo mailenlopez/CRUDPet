@@ -1,1 +1,2 @@
-# Domain
+# User Story:
+As a veterinary professional, I require a web application that enables me to maintain a comprehensive record of the animals I attend to. I need the capability to perform operations such as creating, viewing, updating, and removing animal entries via API endpoints using .NET C#. Furthermore, I seek the ability to establish a secure user account and log in to the application, with all animal data securely stored within a relational database. This functionality is vital for me to efficiently manage the animals in my care and track their medical history.

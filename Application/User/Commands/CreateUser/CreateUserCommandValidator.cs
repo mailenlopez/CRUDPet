@@ -11,7 +11,14 @@ namespace Application.User.Commands.CreateUser
     {
         public CreateUserCommandValidator()
         {
+            RuleFor(u => u.Email).NotEmpty().WithMessage("Email is required.")
+                .MaximumLength(50).WithMessage("Email exceeds the maximum of 50 characters.");
 
+            RuleFor(u => u.Name).NotEmpty().WithMessage("Name is required.")
+                .MaximumLength(50).WithMessage("Name exceeds the maximum of 50 characters.");
+
+            RuleFor(u => u.Password).NotEmpty().WithMessage("Password can not be empty.")
+                .MaximumLength(50).WithMessage("Password exceeds the maximum of 50 characters.");
         }
     }
 }

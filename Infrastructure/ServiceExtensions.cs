@@ -12,10 +12,8 @@ namespace Infrastructure
 {
     public static class ServiceExtensions
     {
-        public static void ConfigurePersistence(this IServiceCollection services, IConfiguration configuration)
+        public static void ConfigurePersistence(this IServiceCollection services)
         {
-            var connectionString = configuration.GetConnectionString("Sqlite");
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPetRepository, PetRepository>();

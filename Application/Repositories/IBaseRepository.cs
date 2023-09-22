@@ -15,5 +15,6 @@ namespace Application.Repositories
         Task UpdateAsync(T entity);
         Task DeleteAsync(int id);
         Task<IEnumerable<T>> Query(string where);
+        Task DeleteAllAsync();
     }
 }

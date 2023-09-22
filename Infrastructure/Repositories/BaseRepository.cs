@@ -41,6 +41,15 @@ namespace Infrastructure.Repositories
             }
         }
 
+        public async Task DeleteAllAsync()
+        {
+            using (SqliteConnection conn = new(_connectionString))
+            {
+                conn.Open();
+                await conn.ExecuteAsync($"DELETE FROM {_tableName}");
+            }
+        }
+
         public async Task<IEnumerable<T>> GetAllAsync()
         {
             using (SqliteConnection  conn = new(_connectionString))

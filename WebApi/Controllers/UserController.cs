@@ -1,5 +1,7 @@
 using Application.User.Commands.CreateUser;
+using Application.User.Queries.GetUser;
 using Application.User.Queries.LoginUser;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,20 +19,19 @@ public class UserController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<int>> Create(CreateUserCommand request, CancellationToken cancellationToken)
+    public async Task<ActionResult<User>> Create(CreateUserCommand request, CancellationToken cancellationToken)
     {
         var response = await _mediator.Send(request, cancellationToken);
 
         if (response != 1)
             throw new Exception("The user could not been created.");
 
-        LoginUserQuery loginUserRequest = new LoginUserQuery
+        GetUserQuery getUserQuery = new GetUserQuery
         {
-            Email = request.Email,
-            Password = request.Password
+            Email = request.Email
         };
 
-        var user = await _mediator.Send("")
-        return Ok(response);
+        var user = await _mediator.Send(getUserQuery, cancellationToken);
+        return Ok(user);
     }
 }
